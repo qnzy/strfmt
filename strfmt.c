@@ -14,14 +14,16 @@ const char * strfmt(char* buf, size_t bufLen, const char* format, ...) {
             if (*format == 'x') {
                 unsigned int num = va_arg(argp, unsigned int);
                 unsigned int nibblesCount = 0;
-                while((1<<(4*nibblesCount))<num) nibblesCount++;
-//                unsigned int temp = num;
-//                while (temp > 0) {
-//                    temp = temp >> 4;
-//                    nibblesCount++;
-//                }
-                for (int i = 0; i < nibblesCount; i++) {
-                    STRFMT_ADD_CHAR("0123456789abcdef"[(num >> (4 * (nibblesCount - i - 1))) & 0xf]);
+                while((1 << (4 * nibblesCount)) <= num) {
+                    nibblesCount++;
+                }
+                if (nibblesCount == 0) {
+                    STRFMT_ADD_CHAR('0');
+                } else {
+                    for (int i = 0; i < nibblesCount; i++) {
+                        STRFMT_ADD_CHAR("0123456789abcdef"
+                                [(num >> (4 * (nibblesCount - i - 1))) & 0xf]);
+                    }
                 }
             } else if (*format == 's') {
                 char * strptr = va_arg(argp, char*);

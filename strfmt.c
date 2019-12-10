@@ -10,6 +10,13 @@
 #define STRFMT_ADD_CHAR(c) if(bufptr<bufLen-1){buf[bufptr++]=c;}else{buf[bufLen-1]='\0';return buf;}
 
 const char * strfmt(char* buf, size_t bufLen, const char* format, ...) {
+    if (buf == NULL || bufLen == 0) {
+        return buf;
+    }
+    if (format == NULL) {
+        buf[0] = '\0';
+        return buf;
+    }
     bool inSpecifier = false;
     va_list argp;
     va_start(argp, format);

@@ -6,6 +6,7 @@
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include <limits.h>
 
 #define STRFMT_ADD_CHAR(c) if(bufptr<bufLen-1){buf[bufptr++]=c;}else{buf[bufLen-1]='\0';return buf;}
 
@@ -28,6 +29,9 @@ const char * strfmt(char* buf, size_t bufLen, const char* format, ...) {
                 unsigned int nibblesCount = 0;
                 while((1 << (4 * nibblesCount)) <= num) {
                     nibblesCount++;
+                    if ((1 << (4*nibblesCount)) > UINT_MAX>>4) {
+                        break;
+                    }
                 }
                 if (nibblesCount == 0) {
                     STRFMT_ADD_CHAR('0');

@@ -1,3 +1,8 @@
+/*
+ * strfmt: tiny string formatting
+ * yves kunz 2019
+ * Public Domain / CC0
+ * */
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stddef.h>

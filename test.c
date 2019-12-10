@@ -8,7 +8,6 @@
 
 int main(void) {
     char buf[100];
-    printf("%x %x\n", UINT_MAX, UINT_MAX>>4);
     CHECK(strfmt(buf, 10, "0123456789abcdef"), "012345678", "limit buffer, no format");
     CHECK(strfmt(buf, 10, "%s", "0123456789abcdef"), "012345678", "limit buffer, string arg");
     CHECK(strfmt(buf, 10, "01234567%x", 0xc0de), "01234567c", "limit buffer, hex arg");

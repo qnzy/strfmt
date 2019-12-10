@@ -30,6 +30,7 @@ const char * strfmt(char* buf, size_t bufLen, const char* format, ...) {
                 while((1 << (4 * nibblesCount)) <= num) {
                     nibblesCount++;
                     if ((1 << (4*nibblesCount)) > UINT_MAX>>4) {
+                        nibblesCount++;
                         break;
                     }
                 }

@@ -2,7 +2,7 @@
 This library provides a tiny string formatting function for C. It is intended to be 
 used in memory limited situations, mainly embedded.
 
-const char * strfmt(char* buf, size_t bufLen, const char* format, ...)
+const char * strfmt(char* buf, const size_t buflen, const char* format, ...);
 
 * The strfmt format string understands only two format specifiers: 
   * %s for strings

@@ -1,3 +1,3 @@
 #pragma once
 
-const char * strfmt(char* buf, size_t buflen, const char* format, ...);
+const char * strfmt(char* buf, const size_t buflen, const char* format, ...);

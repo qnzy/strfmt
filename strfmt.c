@@ -23,7 +23,7 @@ const char * strfmt(char* buf, const size_t bufLen, const char* format, ...) {
     va_start(argp, format);
     unsigned int bufptr = 0;
     while(*format != '\0') {
-        if (inSpecifier == true) {
+        if (inSpecifier) {
             if (*format == 'x') {
                 unsigned int num = va_arg(argp, unsigned int);
                 unsigned int nibblesCount = 0;

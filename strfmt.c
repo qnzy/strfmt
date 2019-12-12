@@ -29,7 +29,7 @@ const char * strfmt(char* buf, const size_t bufLen, const char* format, ...) {
                 unsigned int nibblesCount = 0;
                 while((1 << (4 * nibblesCount)) <= num) {
                     nibblesCount++;
-                    if ((1 << (4*nibblesCount)) > UINT_MAX>>4) {
+                    if ((1 << (4 * nibblesCount)) > UINT_MAX >> 4) {
                         nibblesCount++;
                         break;
                     }

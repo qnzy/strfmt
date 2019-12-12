@@ -60,10 +60,7 @@ const char * strfmt(char* buf, const size_t bufLen, const char* format, ...) {
         ++format;
     }
     va_end(argp);
-    if (bufptr < bufLen - 1) {
-        buf[bufptr++]='\0';
-    }
-    buf[bufLen-1] = '\0';
+    STRFMT_ADD_CHAR('\0');
     return buf;
 }
 

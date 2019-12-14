@@ -1,12 +1,16 @@
 # strfmt
-This library provides a tiny string formatting function for C. It is intended to be 
-used in memory limited situations, mainly embedded.
+This library provides a tiny string formatting function for C. It is basically
+a (very limited) `snprintf` replacement intended for embedded applications with
+very limited space.
 
-const char * strfmt(char* buf, const size_t buflen, const char* format, ...);
+`const char * strfmt(char* buf, const size_t buflen, const char* format, ...)`
 
-* The strfmt format string understands only two format specifiers: 
-  * %s for strings
-  * %x for unsigned ints, printed as hex values
-* No further formatting options are supported
-* The buffersize is given with the bufLen parameter, the buffer is guaranteed to be '\0'-terminated unless buf or bufLen is 0
-* buf is also returned, allowing to do log(strfmt(...))
+Differences to snprintf:
+* only `%s` (for strings) and `%x` (for unsigned int, printed as hex) are supported, no flags/precision/aligning
+* all other `%` are printed directly, so don't quote `%`
+* instead of the number of characters written the function returns a pointer to the buffer, allowing to use it directly in a function call (`log(strfmt(...))`)
+* the buffer will always be null terminated (unless buf or bufLen are 0)
+
+See the test.c file for example code.
+
+For a more full-featured (and a bit larger) printf/snprintf implementation see [here](https://github.com/mpaland/printf).

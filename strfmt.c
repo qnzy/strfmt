@@ -11,7 +11,7 @@
 #define STRFMT_ADD_CHAR(c) if(bufptr<bufLen-1){buf[bufptr++]=c;}else{buf[bufLen-1]='\0';return buf;}
 const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list argp) {
     if (buf == NULL || bufLen == 0) {
-        return buf;
+        return NULL;
     }
     if (format == NULL) {
         buf[0] = '\0';

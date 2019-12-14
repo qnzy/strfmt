@@ -5,6 +5,7 @@ all: test
 
 test: $(OBJ)
 	$(CC) -o test $(OBJ)
+	./test
 
 %.o: %.c
 	$(CC) -c $<

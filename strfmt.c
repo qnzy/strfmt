@@ -3,10 +3,10 @@
  * yves kunz 2019
  * Public Domain / CC0
  * */
+#include <limits.h>
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stddef.h>
-#include <limits.h>
 
 #define STRFMT_ADD_CHAR(c) if(bufptr<bufLen-1){buf[bufptr++]=c;}else{buf[bufLen-1]='\0';return buf;}
 const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list argp) {
@@ -24,9 +24,9 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
             if (*format == 'x') {
                 unsigned int num = va_arg(argp, unsigned int);
                 unsigned int nibblesCount = 0;
-                while((1 << (4 * nibblesCount)) <= num) {
+                while((1u << (4 * nibblesCount)) <= num) {
                     nibblesCount++;
-                    if ((1 << (4 * nibblesCount)) > UINT_MAX >> 4) {
+                    if ((1u << (4 * nibblesCount)) > UINT_MAX >> 4u) {
                         nibblesCount++;
                         break;
                     }
@@ -36,7 +36,7 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
                 } else {
                     for (int i = 0; i < nibblesCount; i++) {
                         STRFMT_ADD_CHAR("0123456789abcdef"
-                                [(num >> (4 * (nibblesCount - i - 1))) & 0xf]);
+                                [(num >> (4 * (nibblesCount - i - 1))) & 0xfu]);
                     }
                 }
             } else if (*format == 's') {

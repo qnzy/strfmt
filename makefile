@@ -1,5 +1,5 @@
 CC = gcc
-CCFLAGS = -Og
+CFLAGS = -Og
 OBJ = test.o strfmt.o
 
 TESTEXE = test
@@ -11,7 +11,7 @@ $(TESTEXE): $(OBJ)
 	./$(TESTEXE)
 
 %.o: %.c
-	$(CC) -c $<
+	$(CC) -c $(CFLAGS) $<
 
 clean:
 	rm -f *.o

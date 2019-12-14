@@ -11,7 +11,7 @@
 int main(void) {
     char buf[100];
     CHECKSTR("not", "equal", "intentionally failing CHECKSTR");
-    CHECKCOND(1==0, "intentianolly failing CHECKCOND");
+    CHECKCOND(1==0, "intentionally failing CHECKCOND");
     CHECKSTR(strfmt(buf, 10, "0123456789abcdef"), "012345678", "limit buffer, no format");
     CHECKSTR(strfmt(buf, 10, "%s", "0123456789abcdef"), "012345678", "limit buffer, string arg");
     CHECKSTR(strfmt(buf, 10, "01234567%x", 0xc0de), "01234567c", "limit buffer, hex arg");

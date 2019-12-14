@@ -1,17 +1,20 @@
 CC = gcc
+CCFLAGS = -Og
 OBJ = test.o strfmt.o
+
+TESTEXE = test
 
 all: test
 
-test: $(OBJ)
-	$(CC) -o test $(OBJ)
-	./test
+$(TESTEXE): $(OBJ)
+	$(CC) -o $(TESTEXE) $(OBJ)
+	./$(TESTEXE)
 
 %.o: %.c
 	$(CC) -c $<
 
 clean:
 	rm -f *.o
-	rm -f test
+	rm -f $(TESTEXE)
 
 .PHONY: clean all

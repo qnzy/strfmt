@@ -1,7 +1,7 @@
 # strfmt
-This library provides a tiny string formatting function for C. It is basically
-a (very limited) `snprintf` replacement intended for embedded applications with
-very limited space. 
+This library provides a tiny string formatting function `strfmt `for C. It is
+basically a (very limited) `snprintf` replacement intended for embedded applications
+with very limited space. 
 
 The function `vstrfmt` is the corresponding `vsnprintf` replacement.
 

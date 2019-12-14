@@ -1,9 +1,12 @@
 # strfmt
 This library provides a tiny string formatting function for C. It is basically
 a (very limited) `snprintf` replacement intended for embedded applications with
-very limited space.
+very limited space. 
+
+The function `vstrfmt` is the corresponding `vsnprintf` replacement.
 
 `const char * strfmt(char* buf, const size_t buflen, const char* format, ...)`
+`const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list argp);`
 
 Differences to snprintf:
 * only `%s` (for strings) and `%x` (for unsigned int, printed as hex) are supported, no flags/precision/aligning

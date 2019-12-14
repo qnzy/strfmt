@@ -30,4 +30,5 @@ int main(void) {
     CHECKSTR(strfmt(buf, 100, NULL), "", "NULL format string");
     CHECKCOND(strfmt(NULL, 100, "") == NULL, "NULL buffer");
     CHECKCOND(strfmt(buf, 0, "") == NULL, "bufLen zero");
+    CHECKSTR(strfmt(buf, 100, "%s", NULL), "", "string argument NULL");
 }

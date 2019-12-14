@@ -41,8 +41,10 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
                 }
             } else if (*format == 's') {
                 char * strptr = va_arg(argp, char*);
-                while (*strptr != '\0') {
-                    STRFMT_ADD_CHAR(*strptr++);
+                if (strptr != NULL) {
+                    while (*strptr != '\0') {
+                        STRFMT_ADD_CHAR(*strptr++);
+                    }
                 }
             } else {
                 STRFMT_ADD_CHAR('%');

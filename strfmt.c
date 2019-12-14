@@ -9,8 +9,7 @@
 #include <limits.h>
 
 #define STRFMT_ADD_CHAR(c) if(bufptr<bufLen-1){buf[bufptr++]=c;}else{buf[bufLen-1]='\0';return buf;}
-
-const char * strfmt(char* buf, const size_t bufLen, const char* format, ...) {
+const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list argp) {
     if (buf == NULL || bufLen == 0) {
         return buf;
     }
@@ -19,8 +18,6 @@ const char * strfmt(char* buf, const size_t bufLen, const char* format, ...) {
         return buf;
     }
     bool inSpecifier = false;
-    va_list argp;
-    va_start(argp, format);
     unsigned int bufptr = 0;
     while(*format != '\0') {
         if (inSpecifier) {
@@ -59,9 +56,16 @@ const char * strfmt(char* buf, const size_t bufLen, const char* format, ...) {
         }
         ++format;
     }
-    va_end(argp);
     STRFMT_ADD_CHAR('\0');
     return buf;
 }
 
 #undef STRFMT_ADD_CHAR
+
+const char * strfmt(char* buf, const size_t bufLen, const char* format, ...) {
+    va_list argp;
+    va_start(argp, format);
+    const char* retval = vstrfmt(buf, bufLen, format, argp);
+    va_end(argp);
+    return retval;
+}

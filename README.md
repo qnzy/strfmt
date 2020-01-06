@@ -13,8 +13,8 @@ Differences to snprintf:
 * only `%s` (for strings) and `%x` (for unsigned int, printed as hex) are supported, no flags/precision/aligning
 * all other `%` are printed directly, so don't quote `%`
 * instead of the number of characters written the function returns a pointer to the buffer, allowing to use it directly in a function call (`log(strfmt(...))`)
-* the buffer will always be null terminated (unless buf or bufLen are 0 in which case NULL is returned)
 
+The buffer will always be null terminated (unless buf or bufLen are 0 in which case NULL is returned).
 See the test.c file for example code.
 
 For a more full-featured (and a bit larger) printf/snprintf implementation see [here](https://github.com/mpaland/printf).

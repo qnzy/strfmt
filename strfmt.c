@@ -57,6 +57,9 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
             STRFMT_ADD_CHAR(*format);
         }
         ++format;
+    } 
+    if (inSpecifier) {
+        STRFMT_ADD_CHAR('%');
     }
     STRFMT_ADD_CHAR('\0');
     return buf;

@@ -1,14 +1,14 @@
 #pragma once
 
-const char * strfmt(char* buf, const size_t buflen, const char* format, ...);
-const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list argp);
-
-#ifdef STRFMT_IMPLEMENTATION
-
 #include <limits.h>
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stddef.h>
+
+const char * strfmt(char* buf, const size_t buflen, const char* format, ...);
+const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list argp);
+
+#ifdef STRFMT_IMPLEMENTATION
 
 #define STRFMT_ADD_CHAR(c) if(bufptr<bufLen-1){buf[bufptr++]=c;}else{buf[bufLen-1]='\0';return buf;}
 const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list argp) {

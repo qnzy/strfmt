@@ -3,6 +3,10 @@ This library provides a tiny string formatting function `strfmt` for C. It is
 basically a (very limited) `snprintf` replacement intended for embedded applications
 with very limited space. 
 
+This is a single header library. To use it you have to define `STRFMT_IMPLEMENTATION` in 
+exactly one file including the header (before the `#include`). The header can be included
+in other files without the definition. 
+
 The function `vstrfmt` is the corresponding `vsnprintf` replacement.
 
 `const char * strfmt(char* buf, const size_t buflen, const char* format, ...)`

@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Og
-OBJ = test.o strfmt.o
+OBJ = test.o
 
 TESTEXE = test
 

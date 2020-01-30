@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include <string.h>
+#define STRFMT_IMPLEMENTATION
 #include "strfmt.h"
 
 #define TEXT_RED printf("\033[0;31m")

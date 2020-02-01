@@ -1,6 +1,7 @@
 CC = gcc
 CFLAGS = -Og
 OBJ = test.o
+HEADER = strfmt.h
 
 TESTEXE = test
 
@@ -10,7 +11,7 @@ $(TESTEXE): $(OBJ)
 	$(CC) -o $(TESTEXE) $(OBJ)
 	./$(TESTEXE)
 
-%.o: %.c
+%.o: %.c $(HEADER)
 	$(CC) -c $(CFLAGS) $<
 
 clean:

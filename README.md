@@ -15,7 +15,7 @@ The function `vstrfmt` is the corresponding `vsnprintf` replacement.
 
 Differences to snprintf:
 * only `%s` (for strings) and `%x` (for unsigned int, printed as hex) are supported, no flags/precision/aligning
-* all other `%` are printed directly, so don't quote `%`
+* use `%%` to print a percent sign
 * instead of the number of characters written the function returns a pointer to the buffer, allowing to use it directly in a function call (`log(strfmt(...))`)
 
 The buffer will always be null terminated (unless buf or bufLen are 0 in which case NULL is returned).

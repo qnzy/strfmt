@@ -48,9 +48,8 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
                         STRFMT_ADD_CHAR(*strptr++);
                     }
                 }
-            } else {
+            } else if (*format == '%') {
                 STRFMT_ADD_CHAR('%');
-                STRFMT_ADD_CHAR(*format);
             }
             inSpecifier = false;
         } else if (*format == '%') {
@@ -60,9 +59,6 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
         }
         ++format;
     } 
-    if (inSpecifier) {
-        STRFMT_ADD_CHAR('%');
-    }
     STRFMT_ADD_CHAR('\0');
     return buf;
 }

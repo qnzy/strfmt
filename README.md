@@ -19,6 +19,7 @@ Differences to snprintf:
 * instead of the number of characters written the function returns a pointer to the buffer, allowing to use it directly in a function call (`log(strfmt(...))`)
 
 The buffer will always be null terminated (unless buf is NULL or bufLen is 0 in which case NULL is returned).
+
 See the test.c file for example code.
 
 For a more full-featured (and a bit larger) printf/snprintf implementation see [here](https://github.com/mpaland/printf).

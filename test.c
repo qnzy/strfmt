@@ -6,7 +6,7 @@
 
 #define TEXT_RED printf("\033[0;31m")
 #define TEXT_GREEN printf("\033[0;32m")
-#define TEXT_RESET printf("\033[0;32m")
+#define TEXT_RESET printf("\033[0m")
 #define CHECKSTR(s1,s2,msg) if(strcmp(s1,s2)){TEXT_RED;printf("Test failed: %s (%s != %s) (%s:%u)\n", msg, s1, s2,__FILE__,__LINE__);TEXT_RESET;}\
                          else{TEXT_GREEN;printf("Test passed: %s (%s == %s)\n", msg, s1, s2);TEXT_RESET;}
 #define CHECKCOND(cond,msg) if(!(cond)){TEXT_RED;printf("Test failed: %s (%s:%u)\n", msg,__FILE__,__LINE__);TEXT_RESET;}\

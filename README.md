@@ -3,7 +3,7 @@ This library provides a tiny string formatting function `strfmt` for C. It is
 basically a (very limited) `snprintf` replacement intended for embedded applications
 with very limited space. 
 
-This is a single header library. To use it you have to define `STRFMT_IMPLEMENTATION` in 
+This is a header only library. To use it you have to define `STRFMT_IMPLEMENTATION` in 
 exactly one file including the header (before the `#include`). The header can be included
 in other files without the definition. 
 

@@ -1,3 +1,9 @@
+/* 
+ * strfmt: tiny header only string formatting library
+ *
+ * public domain / CC0
+ */
+
 #pragma once
 
 #include <limits.h>

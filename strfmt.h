@@ -1,6 +1,5 @@
 /* 
  * strfmt: tiny header only string formatting library
- *
  * public domain / CC0
  */
 

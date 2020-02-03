@@ -24,4 +24,4 @@ See the test.c file for example code.
 
 For a more full-featured (and a bit larger) printf/snprintf implementation see [here](https://github.com/mpaland/printf).
 
-This is public domain / CC0.
+Public Domain / CC0

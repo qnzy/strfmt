@@ -10,7 +10,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-const char * strfmt(char* buf, const size_t buflen, const char* format, ...);
+const char * strfmt(char* buf, const size_t bufLen, const char* format, ...);
 const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list argp);
 
 #ifdef STRFMT_IMPLEMENTATION

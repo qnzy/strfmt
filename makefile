@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Og -Wall -Werror -Wextra -pedantic
+CFLAGS = -Og -Wall -Werror -Wextra -pedantic -fsanitize=address
 OBJ = test.o
 HEADER = strfmt.h
 
@@ -8,7 +8,7 @@ TESTEXE = test
 all: test
 
 $(TESTEXE): $(OBJ)
-	$(CC) -o $(TESTEXE) $(OBJ)
+	$(CC) $(CFLAGS) -o $(TESTEXE) $(OBJ)
 	./$(TESTEXE)
 
 %.o: %.c $(HEADER)

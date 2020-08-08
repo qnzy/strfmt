@@ -18,4 +18,7 @@ clean:
 	rm -f *.o
 	rm -f $(TESTEXE)
 
-.PHONY: clean all
+lint:
+	clang-tidy -checks="*" -header-filter=".*" *.c
+
+.PHONY: clean all lint

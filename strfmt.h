@@ -29,7 +29,7 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
     while(*format != '\0') {
         if (inSpecifier) {
             if (*format == 'x') {
-                unsigned int num = va_arg(argp, unsigned int);
+                const unsigned int num = va_arg(argp, unsigned int);
                 unsigned int nibblesCount = 0;
                 while((1u << (4 * nibblesCount)) <= num) {
                     nibblesCount++;

@@ -41,7 +41,7 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
                 if (nibblesCount == 0) {
                     STRFMT_ADD_CHAR('0');
                 } else {
-                    for (int i = 0; i < nibblesCount; i++) {
+                    for (unsigned int i = 0; i < nibblesCount; i++) {
                         STRFMT_ADD_CHAR("0123456789abcdef"
                                 [(num >> (4 * (nibblesCount - i - 1))) & 0xfu]);
                     }

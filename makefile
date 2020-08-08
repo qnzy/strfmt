@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Og -Wall -Werror -pedantic
+CFLAGS = -Og -Wall -Werror -Wextra -pedantic
 OBJ = test.o
 HEADER = strfmt.h
 

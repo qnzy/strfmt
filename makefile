@@ -19,6 +19,6 @@ clean:
 	rm -f $(TESTEXE)
 
 lint:
-	clang-tidy -checks="*" -header-filter=".*" *.c
+	clang-tidy -checks="*,-llvm-header-guard" -header-filter=".*" *.c
 
 .PHONY: clean all lint

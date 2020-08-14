@@ -1,13 +1,13 @@
 CC = gcc
-CFLAGS = -Og -Wall -Werror -Wextra -pedantic -fsanitize=address
+CFLAGS = -Og -Wall -Werror -Wextra -pedantic -fsanitize=address -std=c99
 coverage: CFLAGS = -Og -Wall -Werror -Wextra -pedantic -fsanitize=address -fprofile-arcs -ftest-coverage -fPIC
 size: CFLAGS = -Og -Wall -Werror -Wextra -pedantic
 OBJ = test.o
 HEADER = strfmt.h
 
-bin = test
+bin = testexe
 
-doTest: $(bin)
+test: $(bin)
 	./$(bin)
 
 $(bin): $(OBJ)
@@ -24,10 +24,10 @@ clean:
 lint:
 	clang-tidy -checks="*,-llvm-header-guard" -header-filter=".*" *.c
 
-coverage: doTest
+coverage: clean test
 	gcovr -r . --html --html-details -o coverage.html
 
-size: $(bin)
+size: clean $(bin)
 	nm test -S --size-sort -td
 
 .PHONY: clean all lint

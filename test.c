@@ -37,4 +37,5 @@ int main(void) {
     CHECKSTR(strfmt(buf, 100, "%s", NULL), "", "string argument NULL");
     CHECKSTR(strfmt(buf, 100, "10%% or %x%%", 5), "10% or 5%", "quoting percent sign");
     CHECKSTR(strfmt(buf, 100, "_% %", 5), "_", "lonely percent sign");
+    return 0;
 }

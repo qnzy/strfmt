@@ -41,7 +41,8 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
                 if (nibblesCount == 0) {
                     STRFMT_ADD_CHAR('0');
                 } else {
-                    for (unsigned int i = 0; i < nibblesCount; i++) {
+                    unsigned int i;
+                    for (i = 0; i < nibblesCount; i++) {
                         STRFMT_ADD_CHAR("0123456789abcdef"
                                 [(num >> (4 * (nibblesCount - i - 1))) & 0xfu]);
                     }
@@ -71,8 +72,9 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
 
 const char * strfmt(char* buf, const size_t bufLen, const char* format, ...) {
     va_list argp;
+    const char* retval;
     va_start(argp, format);
-    const char* retval = vstrfmt(buf, bufLen, format, argp);
+    retval = vstrfmt(buf, bufLen, format, argp);
     va_end(argp);
     return retval;
 }

@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Og -Wall -Werror -Wextra -pedantic
 test: CFLAGS += -fsanitize=address
 coverage: CFLAGS += -fprofile-arcs -ftest-coverage -fPIC
-OBJ = test.o
+SRC = test.c
 HEADER = strfmt.h
 
 bin = testexe
@@ -10,11 +10,13 @@ bin = testexe
 test: $(bin)
 	./$(bin)
 
-$(bin): $(OBJ)
-	$(CC) $(CFLAGS) -o $(bin) $(OBJ)
+std: clean
+	$(CC) $(CFLAGS) -std=c89 test.c -o $(bin)
+	$(CC) $(CFLAGS) -std=c99 test.c -o $(bin)
+	$(CC) $(CFLAGS) -std=c11 test.c -o $(bin)
 
-%.o: %.c $(HEADER)
-	$(CC) -c $(CFLAGS) $<
+$(bin): $(OBJ)
+	$(CC) $(CFLAGS) $(SRC) -o $(bin)
 
 clean:
 	rm -f *.o
@@ -30,4 +32,4 @@ coverage: clean test
 size: clean $(bin)
 	nm test -S --size-sort -td
 
-.PHONY: clean all lint coverage size
+.PHONY: clean all lint coverage size std

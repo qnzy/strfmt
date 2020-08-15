@@ -1,7 +1,7 @@
 CC = gcc
-CFLAGS = -Og -Wall -Werror -Wextra -pedantic -fsanitize=address -std=c99
-coverage: CFLAGS = -Og -Wall -Werror -Wextra -pedantic -fsanitize=address -fprofile-arcs -ftest-coverage -fPIC
-size: CFLAGS = -Og -Wall -Werror -Wextra -pedantic
+CFLAGS = -Og -Wall -Werror -Wextra -pedantic
+test: CFLAGS += -fsanitize=address
+coverage: CFLAGS += -fprofile-arcs -ftest-coverage -fPIC
 OBJ = test.o
 HEADER = strfmt.h
 
@@ -30,4 +30,4 @@ coverage: clean test
 size: clean $(bin)
 	nm test -S --size-sort -td
 
-.PHONY: clean all lint
+.PHONY: clean all lint coverage size

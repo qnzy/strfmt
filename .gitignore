@@ -1,2 +1,5 @@
 *.o
-test
+testexe
+*.html
+*.gcda
+*.gcno

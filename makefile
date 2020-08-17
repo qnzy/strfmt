@@ -30,6 +30,6 @@ coverage: clean test
 	gcovr -r . --html --html-details -o coverage.html
 
 size: clean $(bin)
-	nm test -S --size-sort -td
+	nm $(bin) -S --size-sort -td
 
 .PHONY: clean all lint coverage size std

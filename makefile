@@ -15,7 +15,7 @@ std: clean
 	$(CC) $(CFLAGS) -std=c99 $(SRC) -o $(bin)
 	$(CC) $(CFLAGS) -std=c11 $(SRC) -o $(bin)
 
-$(bin): $(OBJ)
+$(bin): $(SRC) $(HEADER)
 	$(CC) $(CFLAGS) $(SRC) -o $(bin)
 
 clean:

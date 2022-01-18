@@ -21,6 +21,8 @@ const char * vstrfmt(char* buf, size_t bufLen, const char* format, va_list argp)
 
 #define STRFMT_ADD_CHAR(c) if(bufptr<bufLen-1){buf[bufptr++]=c;}else{buf[bufLen-1]='\0';return buf;}
 const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list argp) {
+    bool inSpecifier = false;
+    unsigned int bufptr = 0;
     if (buf == NULL || bufLen == 0) {
         return NULL;
     }
@@ -28,8 +30,6 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
         buf[0] = '\0';
         return buf;
     }
-    bool inSpecifier = false;
-    unsigned int bufptr = 0;
     while(*format != '\0') {
         if (inSpecifier) {
             if (*format == 'x') {

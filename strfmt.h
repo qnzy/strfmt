@@ -4,7 +4,7 @@
  *
  * this is a header only library. to use it you need
  * to define STRFMT_IMPLEMENTATION in exactly one
- * compilation unit befor including this file.
+ * compilation unit before including this file.
  */
 
 #pragma once

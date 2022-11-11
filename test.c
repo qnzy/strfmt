@@ -40,7 +40,7 @@ int main(void) {
     CHECKSTR(strfmt(buf, 2, "%%"), "%", "buflen two, only %%");
     CHECKSTR(strfmt(buf, 100, "%s", NULL), "", "string argument NULL");
     CHECKSTR(strfmt(buf, 100, "10%% or %x%%", 5), "10% or 5%", "quoting percent sign");
-    CHECKSTR(strfmt(buf, 100, "_% %", 5), "_", "lonely percent sign");
+    CHECKSTR(strfmt(buf, 100, "_% %"), "_", "lonely percent sign");
     CHECKSTR(strfmt(buf, 2, "_%x_", 0), "_", "hex zero limit buffer");
     CHECKSTR(strfmt(buf, 3, "10%%"), "10", "quoting percent sign, limit buffer");
     CHECKSTR(strfmt(buf, 10, "012345678"), "012345678", "limit buffer, no format");

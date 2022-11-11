@@ -25,7 +25,7 @@ clean:
 	rm -f *.gcda *.gcno *.gcov *.html
 
 lint:
-	clang-tidy -checks="*,-llvm-header-guard" -header-filter=".*" *.c
+	clang-tidy -checks="*,-llvm-header-guard,-altera*,-clang-diagnostic-format,-readability-function-cognitive-complexity,-llvmlibc*" -header-filter=".*" *.c
 
 coverage: clean test
 	gcovr -r . --html --html-details -o coverage.html

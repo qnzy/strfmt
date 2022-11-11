@@ -14,7 +14,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-#if defined(COMPILER_GCC) || defined(__clang__)
+#if defined(__GNUC__) || defined(__clang__)
     #define STRFMT_ATTR __attribute__((format(printf, 3, 4)))
     #define STRFMT_ATTR_V __attribute__((format(printf, 3, 0)))
 #else

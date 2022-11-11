@@ -1,6 +1,7 @@
 CC = gcc
-CFLAGS = -Og -Wall -Werror -Wextra -pedantic
-test: CFLAGS += -fsanitize=address
+CFLAGS = -Og -Wall -Werror -Wextra -pedantic 
+CFLAGS += -Wno-format # allow bad calls in the test file
+test: CFLAGS += -fsanitize=address 
 coverage: CFLAGS += -fprofile-arcs -ftest-coverage -fPIC
 SRC = test.c
 HEADER = strfmt.h

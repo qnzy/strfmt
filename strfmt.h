@@ -16,15 +16,15 @@
 
 #if defined(__GNUC__) || defined(__clang__)
     #define STRFMT_ATTR __attribute__((format(printf, 3, 4)))
-    #define STRFMT_ATTR_V __attribute__((format(printf, 3, 0)))
+    #define VSTRFMT_ATTR __attribute__((format(printf, 3, 0)))
 #else
     #define STRFMT_ATTR 
-    #define STRFMT_ATTR_V
+    #define VSTRFMT_ATTR
 #endif
 
 
 const char * strfmt(char* buf, size_t bufLen, const char* format, ...) STRFMT_ATTR;
-const char * vstrfmt(char* buf, size_t bufLen, const char* format, va_list argp) STRFMT_ATTR_V;
+const char * vstrfmt(char* buf, size_t bufLen, const char* format, va_list argp) VSTRFMT_ATTR;
 
 #ifdef STRFMT_IMPLEMENTATION
 

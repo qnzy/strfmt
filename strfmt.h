@@ -26,6 +26,12 @@
 const char * strfmt(char* buf, size_t bufLen, const char* format, ...) STRFMT_ATTR;
 const char * vstrfmt(char* buf, size_t bufLen, const char* format, va_list argp) VSTRFMT_ATTR;
 
+
+#undef STRFMT_ATTR
+#undef VSTRFMT_ATTR
+
+/* --------------- Implementation --------------- */
+
 #ifdef STRFMT_IMPLEMENTATION
 
 #define STRFMT_ADD_CHAR(c) if(bufptr<bufLen-1){buf[bufptr++]=c;}else{buf[bufLen-1]='\0';return buf;}

@@ -50,13 +50,11 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
             if (*format == 'x') {
                 const unsigned int num = va_arg(argp, unsigned int);
                 unsigned int nibblesCount = 0;
-                while((1U << (4 * nibblesCount)) <= num) {
+                unsigned int tmp = num;
+                do {
                     nibblesCount++;
-                    if ((1U << (4 * nibblesCount)) > UINT_MAX >> 4U) {
-                        nibblesCount++;
-                        break;
-                    }
-                }
+                    tmp >>= 4U;
+                } while (tmp != 0);
                 if (nibblesCount == 0) {
                     STRFMT_ADD_CHAR('0');
                 } else {
@@ -67,7 +65,7 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
                     }
                 }
             } else if (*format == 's') {
-                char * strptr = va_arg(argp, char*);
+                const char * strptr = va_arg(argp, const char*);
                 if (strptr != NULL) {
                     while (*strptr != '\0') {
                         STRFMT_ADD_CHAR(*strptr++);

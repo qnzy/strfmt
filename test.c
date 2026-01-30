@@ -44,5 +44,10 @@ int main(void) {
     CHECKSTR(strfmt(buf, 2, "_%x_", 0), "_", "hex zero limit buffer");
     CHECKSTR(strfmt(buf, 3, "10%%"), "10", "quoting percent sign, limit buffer");
     CHECKSTR(strfmt(buf, 10, "012345678"), "012345678", "limit buffer, no format");
+    CHECKSTR(strfmt(buf, 100, "%x%x", 0xa, 0xb), "ab", "consecutive hex");
+    CHECKSTR(strfmt(buf, 100, "test%"), "test", "trailing percent");
+    CHECKSTR(strfmt(buf, 100, "%x", UINT_MAX), "ffffffff", "UINT_MAX");
+    CHECKSTR(strfmt(buf, 100, "%s%s", NULL, NULL), "", "multiple NULL strings");
+    CHECKSTR(strfmt(buf, 100, "<%s>", ""), "<>", "empty string arg");
     return 0;
 }

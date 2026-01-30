@@ -51,18 +51,14 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
                 const unsigned int num = va_arg(argp, unsigned int);
                 unsigned int nibblesCount = 0;
                 unsigned int tmp = num;
+                unsigned int i = 0;
                 do {
                     nibblesCount++;
                     tmp >>= 4U;
                 } while (tmp != 0);
-                if (nibblesCount == 0) {
-                    STRFMT_ADD_CHAR('0');
-                } else {
-                    unsigned int i = 0;
-                    for (i = 0; i < nibblesCount; i++) {
-                        STRFMT_ADD_CHAR("0123456789abcdef"
-                                [(num >> (4 * (nibblesCount - i - 1))) & 0xfU]);
-                    }
+                for (i = 0; i < nibblesCount; i++) {
+                    STRFMT_ADD_CHAR("0123456789abcdef"
+                            [(num >> (4 * (nibblesCount - i - 1))) & 0xfU]);
                 }
             } else if (*format == 's') {
                 const char * strptr = va_arg(argp, const char*);

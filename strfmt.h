@@ -50,12 +50,11 @@ const char * vstrfmt(char* buf, const size_t bufLen, const char* format, va_list
             if (*format == 'x') {
                 const unsigned int num = va_arg(argp, unsigned int);
                 unsigned int nibblesCount = 0;
-                unsigned int tmp = num;
-                unsigned int i = 0;
+                unsigned int i = num;
                 do {
                     nibblesCount++;
-                    tmp >>= 4U;
-                } while (tmp != 0);
+                    i >>= 4U;
+                } while (i != 0);
                 for (i = 0; i < nibblesCount; i++) {
                     STRFMT_ADD_CHAR("0123456789abcdef"
                             [(num >> (4 * (nibblesCount - i - 1))) & 0xfU]);
